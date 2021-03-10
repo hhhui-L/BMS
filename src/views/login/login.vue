@@ -52,7 +52,10 @@ export default {
     handleLogin (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$router.push({ name: 'Main', params: { name: this.loginForm.username } })
+          // this.$router.push({ name: 'Main', params: { name: this.loginForm.username } })
+          sessionStorage.setItem('isLogin', 'true')
+          this.$router.push('/main')
+          this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
         } else {
           this.$message.error('用户名或密码错误')
           console.log('error submit!!')

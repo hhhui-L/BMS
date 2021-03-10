@@ -32,10 +32,10 @@
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>查看</el-dropdown-item>
                 <el-dropdown-item>新增</el-dropdown-item>
-                <el-dropdown-item>退出</el-dropdown-item>
+                <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-            <span>{{$route.params.name}}</span>
+            <span>{{$store.getters.getUser.name}}</span>
           </el-header>
 
           <el-main>
@@ -48,7 +48,12 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  methods: {
+    logout () {
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 

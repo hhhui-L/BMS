@@ -7,7 +7,15 @@
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  mounted () {
+    window.addEventListener('unload', this.savaState)
+  },
+  methods: {
+    savaState () {
+      sessionStorage.setItem('state', JSON.stringify(this.$store.state.user))
+    }
+  }
 }
 </script>
 
