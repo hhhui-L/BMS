@@ -18,8 +18,10 @@ export default {
 
 <style scoped>
   #body {
+    position:absolute;
     background: url("../assets/404/error_bg.jpg") repeat-x scroll 0 0 #67ACE4;
-    height: 730px;
+    height: 100%;
+    width: 100%;
   }
   #container {
     margin: 0 auto;
