@@ -30,9 +30,9 @@
       </el-form-item>
       <div>
         <router-link :to="{ path: '/forgetpwd'}" class="unlogin">
-          忘记密码?
+          忘记密码? |
         </router-link>
-        |
+
         <router-link :to="{path: '/register'}">
           <a href="register.vue" target="_blank" align="right" class="unlogin">注册新账号</a>
         </router-link>

@@ -1,8 +1,8 @@
 <template>
     <div>
       <el-container>
-        <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['2']">
+        <el-aside width="200px">
+        <el-menu :default-openeds="['3']">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-setting"></i>项目管理</template>
             <el-menu-item-group>
@@ -23,21 +23,32 @@
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+          <el-menu-item index="3">
+            <i class="el-icon-s-marketing"></i>
+            <router-link to="/dataquery">数据查询</router-link>
+          </el-menu-item>
         </el-menu>
         </el-aside>
         <el-container>
-          <el-header style="text-align: right; font-size: 12px">
+          <el-header style="font-size: 25px">
+            <div style="float: left;margin-right: auto;margin-left: auto">
+              <span v-show="!isCollapse">
+                <!--<i class="el-icon-s-fold" style="font-size: 25px"></i>-->
+                <i v-show="!isCollapse" class="el-icon-s-fold expandBtn" @click="isCollapse=true"></i>
+                <i v-show="isCollapse" class="el-icon-s-fold shrinkBtn" @click="isCollapse=false"></i>
+              </span>
+            </div>
+            <div style="float: right">
             <el-dropdown>
-              <i class="el-icon-setting" style="margin-right: 15px"></i>
+              <i class="el-icon-setting" style="margin-right: 15px;font-size: 25px"></i>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>查看</el-dropdown-item>
-                <el-dropdown-item>新增</el-dropdown-item>
-                <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
+                <el-dropdown-item>修改密码</el-dropdown-item>
+                <el-dropdown-item @click.native="logout">退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
             <span>{{$store.getters.getUser.name}}</span>
+            </div>
           </el-header>
-
           <el-main>
             <router-view/>
           </el-main>
@@ -49,8 +60,14 @@
 <script>
 export default {
   name: 'Home',
+  data () {
+    return {
+      isCollapse: false
+    }
+  },
   methods: {
     logout () {
+      sessionStorage.setItem('isLogin', 'false')
       this.$router.push('/login')
     }
   }
@@ -59,14 +76,12 @@ export default {
 
 <style>
   .el-header {
-    background-color: #B3C0D1;
-    color: #333;
+    background-color: #EBEEF5;
     line-height: 60px;
   }
   .el-aside {
     color: #333;
   }
-
   a {
     /*去掉原有链接文字下划线*/
     text-decoration: none;

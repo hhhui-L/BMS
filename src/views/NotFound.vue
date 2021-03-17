@@ -3,8 +3,9 @@
     <div id="container">
       <img class="png" src="../assets/404/404.png" />
       <img class="png msg" src="../assets/404/404_msg.png" />
-      <p><a href="/main" target="_blank">
-        <img class="png" src="../assets/404/404_to_index.png" /></a> </p>
+      <router-link to="/main">
+        <p><img class="png" src="../assets/404/404_to_index.png" /></p>
+      </router-link>
     </div>
     <div id="cloud" class="png"></div>
   </div>

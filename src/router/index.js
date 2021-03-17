@@ -39,6 +39,22 @@ const routes = [
         meta: {
           title: '数据统计'
         }
+      },
+      {
+        path: '/dataquery',
+        name: 'dataQuery',
+        component: () => import('../views/dataquery/dataQuery'),
+        meta: {
+          title: '数据查询'
+        }
+      },
+      {
+        path: '/dataquery/dataRecord',
+        name: 'dataRecord',
+        component: () => import('../views/dataquery/dataRecord'),
+        meta: {
+          title: '数据记录'
+        }
       }
     ]
   },
