@@ -12,7 +12,6 @@ Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.use(Vuex)
 Vue.prototype.axios = axios
-
 Vue.config.productionTip = false
 
 new Vue({

@@ -60,6 +60,18 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // this.$router.push({ name: 'Main', params: { name: this.loginForm.username } })
+          // const data = { username: String(this.loginForm.username), password: String(this.loginForm.password) }
+          this.axios({
+            url: 'http://localhost:8089', // 请求的地址
+            method: 'post' // 请求的方式
+            // data: data // 请求的表单数据
+          })
+            .then(res => {
+              alert(res.data)
+              console.info('后台返回的数据', res.data)
+            }).catch(err => {
+              console.info('报错的信息', err.response.message)
+            })
           sessionStorage.setItem('isLogin', 'true')
           this.$router.push('/main')
           this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })

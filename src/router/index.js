@@ -45,7 +45,7 @@ const routes = [
         name: 'dataQuery',
         component: () => import('../views/dataquery/dataQuery'),
         meta: {
-          title: '数据查询'
+          title: '实验数据'
         }
       },
       {

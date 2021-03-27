@@ -1,8 +1,8 @@
 <template>
     <div>
       <el-container>
-        <el-aside width="200px">
-        <el-menu :default-openeds="['3']">
+        <el-aside width="200px" >
+        <el-menu :default-openeds="['3']" :collapse="isCollapse" :collapse-transition="false">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-setting"></i>项目管理</template>
             <el-menu-item-group>
@@ -25,19 +25,20 @@
           </el-submenu>
           <el-menu-item index="3">
             <i class="el-icon-s-marketing"></i>
-            <router-link to="/dataquery">数据查询</router-link>
+            <router-link to="/dataquery">实验数据</router-link>
           </el-menu-item>
         </el-menu>
         </el-aside>
         <el-container>
           <el-header style="font-size: 25px">
-            <div style="float: left;margin-right: auto;margin-left: auto">
-              <span v-show="!isCollapse">
-                <!--<i class="el-icon-s-fold" style="font-size: 25px"></i>-->
+           <!-- <div style="float: left;margin-right: auto;margin-left: auto">
+              <i class="el-icon-s-unfold shrinkBtn" @click="toggleCollapse"></i>
+              &lt;!&ndash;<span v-show="!isCollapse">
+                &lt;!&ndash;<i class="el-icon-s-fold" style="font-size: 25px"></i>&ndash;&gt;
                 <i v-show="!isCollapse" class="el-icon-s-fold expandBtn" @click="isCollapse=true"></i>
                 <i v-show="isCollapse" class="el-icon-s-fold shrinkBtn" @click="isCollapse=false"></i>
-              </span>
-            </div>
+              </span>&ndash;&gt;
+            </div>-->
             <div style="float: right">
             <el-dropdown>
               <i class="el-icon-setting" style="margin-right: 15px;font-size: 25px"></i>
@@ -69,6 +70,9 @@ export default {
     logout () {
       sessionStorage.setItem('isLogin', 'false')
       this.$router.push('/login')
+    },
+    toggleCollapse () {
+      this.isCollapse = !this.isCollapse
     }
   }
 }
