@@ -7,11 +7,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import Vuex from 'vuex'
 import store from './store'
+import echarts from 'echarts'
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.use(Vuex)
 Vue.prototype.axios = axios
+Vue.prototype.echarts = echarts
 Vue.config.productionTip = false
 
 new Vue({

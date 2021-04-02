@@ -17,41 +17,65 @@ const routes = [
     }
   },
   {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/register/register'),
+    meta: {
+      title: '注册账号'
+    }
+  },
+  {
     path: '/main',
-    name: 'Main',
+    name: '首页',
     component: () => import('../views/Main'),
     meta: {
       title: '首页'
     },
     children: [
       {
-        path: '/device/bms',
-        name: 'Bms',
+        path: '/bms',
+        name: '电池监控',
         component: () => import('../views/bms/Bms'),
         meta: {
           title: '电池监控'
         }
       },
       {
-        path: '/device/data',
-        name: 'DataStatistics',
-        component: () => import('../views/bms/DataStatistics'),
+        path: '/currentexp',
+        name: '当前实验',
+        component: () => import('../views/currentExperiment/currentExperiment'),
         meta: {
-          title: '数据统计'
+          title: '当前实验'
         }
       },
       {
-        path: '/dataquery',
-        name: 'dataQuery',
-        component: () => import('../views/dataquery/dataQuery'),
+        path: '/expdata',
+        name: '实验数据',
+        component: () => import('../views/expData/expData'),
         meta: {
           title: '实验数据'
         }
       },
       {
-        path: '/dataquery/dataRecord',
-        name: 'dataRecord',
-        component: () => import('../views/dataquery/dataRecord'),
+        path: '/manage',
+        name: '项目管理',
+        component: () => import('../views/manage/manage'),
+        meta: {
+          title: '项目管理'
+        }
+      },
+      {
+        path: '/test',
+        name: '项目测试',
+        component: () => import('../views/test'),
+        meta: {
+          title: '项目测试'
+        }
+      },
+      {
+        path: '/expdata/datarecord',
+        name: '数据记录',
+        component: () => import('../views/dataRecord/dataRecord'),
         meta: {
           title: '数据记录'
         }

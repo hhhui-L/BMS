@@ -1,32 +1,37 @@
 <template>
     <div>
       <el-container>
-        <el-aside width="200px" >
-        <el-menu :default-openeds="['3']" :collapse="isCollapse" :collapse-transition="false">
-          <el-submenu index="1">
-            <template slot="title"><i class="el-icon-setting"></i>项目管理</template>
-            <el-menu-item-group>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="2">
+        <el-aside width="200px">
+        <el-menu :default-openeds="['3']" :collapse="isCollapse" :collapse-transition="false" >
+          <el-menu-item index="1">
+            <i class="el-icon-guide"></i>
+            <router-link to="/currentexp">当前实验</router-link>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <i class="el-icon-s-data"></i>
+            <router-link to="/bms">电池监测</router-link>
+          </el-menu-item>
+          <el-menu-item index="3">
+            <i class="el-icon-s-marketing"></i>
+            <router-link to="/expdata">实验数据</router-link>
+          </el-menu-item>
+          <el-menu-item index="4">
+            <i class="el-icon-setting"></i>
+            <router-link to="/manage">项目管理</router-link>
+          </el-menu-item>
+          <el-menu-item index="5">
+            <i class="el-icon-s-help"></i>
+            <router-link to="/test">项目测试</router-link>
+          </el-menu-item>
+         <!-- <el-submenu index="2">
             <template slot="title"><i class="el-icon-menu"></i>设备监控</template>
             <el-menu-item-group>
-              <el-menu-item index="2-1">
-                <i class="el-icon-guide"></i>
-                <router-link to="/device/bms">电池监控</router-link>
-              </el-menu-item>
               <el-menu-item index="2-2">
                 <i class="el-icon-s-data"></i>
                 <router-link to="/device/data" >数据统计</router-link>
               </el-menu-item>
             </el-menu-item-group>
-          </el-submenu>
-          <el-menu-item index="3">
-            <i class="el-icon-s-marketing"></i>
-            <router-link to="/dataquery">实验数据</router-link>
-          </el-menu-item>
+          </el-submenu>-->
         </el-menu>
         </el-aside>
         <el-container>
@@ -39,6 +44,12 @@
                 <i v-show="isCollapse" class="el-icon-s-fold shrinkBtn" @click="isCollapse=false"></i>
               </span>&ndash;&gt;
             </div>-->
+            <div>
+              <el-breadcrumb separator-class="el-icon-arrow-right" style="float:left;margin-top: 18px;margin-bottom: 18px;font-size: 24px">
+                <!--<el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>-->
+                <el-breadcrumb-item v-for="(item,index) in breadList" :key="index">{{item.name}}</el-breadcrumb-item>
+              </el-breadcrumb>
+            </div>
             <div style="float: right">
             <el-dropdown>
               <i class="el-icon-setting" style="margin-right: 15px;font-size: 25px"></i>
@@ -47,10 +58,10 @@
                 <el-dropdown-item @click.native="logout">退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-            <span>{{$store.getters.getUser.name}}</span>
+            <span style="font-size: 25px">{{$store.getters.getUser.name}}</span>
             </div>
           </el-header>
-          <el-main>
+          <el-main style="padding: 0">
             <router-view/>
           </el-main>
         </el-container>
@@ -63,8 +74,12 @@ export default {
   name: 'Home',
   data () {
     return {
-      isCollapse: false
+      isCollapse: false,
+      breadList: null
     }
+  },
+  created () {
+    this.getBreadcrumb()
   },
   methods: {
     logout () {
@@ -73,6 +88,16 @@ export default {
     },
     toggleCollapse () {
       this.isCollapse = !this.isCollapse
+    },
+    getBreadcrumb () {
+      const matched = this.$route.matched.filter(item => item.name)
+      // const first = matched[0]
+      this.breadList = matched
+    }
+  },
+  watch: {
+    $route () {
+      this.getBreadcrumb()
     }
   }
 }

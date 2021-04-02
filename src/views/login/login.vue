@@ -34,13 +34,14 @@
         </router-link>
 
         <router-link :to="{path: '/register'}">
-          <a href="register.vue" target="_blank" align="right" class="unlogin">注册新账号</a>
+          <a href="register.vue" target="_blank" align="right" class="unlogin">注册账号</a>
         </router-link>
       </div>
     </el-form>
   </div>
 </template>
 <script>
+import { login } from '../../network/network'
 export default {
   name: 'login',
   data () {
@@ -61,20 +62,33 @@ export default {
         if (valid) {
           // this.$router.push({ name: 'Main', params: { name: this.loginForm.username } })
           // const data = { username: String(this.loginForm.username), password: String(this.loginForm.password) }
-          this.axios({
-            url: 'http://localhost:8089', // 请求的地址
-            method: 'post' // 请求的方式
-            // data: data // 请求的表单数据
+          /* request({
+            url: '/login'
+          }).then(res => {
+            console.log(res)
+          }).catch(err => {
+            console.log(err)
+          }) */
+          /* request({
+            url: '/login'
+          }, res => {
+            console.log(res)
+          }, err => {
+            console.log(err)
+          }) */
+          const loginInfo = new FormData()
+          loginInfo.append('userName', this.loginForm.username)
+          loginInfo.append('passwd', this.loginForm.password)
+          console.log(loginInfo)
+          login(loginInfo).then(res => {
+            alert(res.data.msg)
+            if (res.data.code === 200) {
+              this.$router.push('/main')
+              this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
+            }
+          }).catch(res => {
+            alert(res.data.msg)
           })
-            .then(res => {
-              alert(res.data)
-              console.info('后台返回的数据', res.data)
-            }).catch(err => {
-              console.info('报错的信息', err.response.message)
-            })
-          sessionStorage.setItem('isLogin', 'true')
-          this.$router.push('/main')
-          this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
         } else {
           this.$message.error('用户名或密码错误')
           console.log('error submit!!')

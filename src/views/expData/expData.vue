@@ -2,9 +2,9 @@
   <div>
     <!-- 描述：选择条件，清空和搜索按钮-->
     <div class="filter-container">
-      <div class="letf-items" style="float: left;margin-bottom: 10px">
+      <div class="letf-items" style="float: left;margin-bottom: 10px;margin-top: 10px">
         <el-input placeholder="实验名称"
-                  style="width: 200px;margin-right: 10px"
+                  style="width: 200px;margin-right: 10px;margin-left: 10px"
                   class="filter-item"
                   v-model="keyWords.experiment_name"/>
         <el-input placeholder="电池型号"
@@ -21,7 +21,7 @@
           </el-option>
         </el-select>
       </div>
-      <div class="right-items" style="float: right;margin-bottom: 10px">
+      <div class="right-items" style="float: right;margin-bottom: 10px;margin-top: 10px">
         <el-button class="filter-item"
                    style="margin-left: 10px;"
                    type="primary"
@@ -32,7 +32,7 @@
                    icon="el-icon-delete"
                    @click="handleClear">清空</el-button>
         <el-button
-          type="danger">批量删除</el-button>
+          type="danger" style="margin-right: 10px">批量删除</el-button>
       </div>
     </div>
       <!-- 实验列表区域 -->
@@ -43,7 +43,7 @@
         fit
         highlight-current-row
         style="width: 100%;"
-        height="600"
+        height="700"
       >
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column
@@ -271,7 +271,7 @@ export default {
       this.keyWords.experiment_type = null
     },
     handleCheck () {
-      this.$router.push('/dataquery/dataRecord')
+      this.$router.push('/expdata/datarecord')
     },
     // 前端搜索功能需要区分是否检索,因为对应的字段的索引不同
     // 用两个变量接收currentChangePage函数的参数
