@@ -108,8 +108,12 @@ export default {
     background-color: #EBEEF5;
     line-height: 60px;
   }
+  /*.el-menu{
+    background-color: #EBEEF5;
+  }*/
   .el-aside {
-    color: #333;
+    /*height: 858px;*/
+    background-color: #EBEEF5;
   }
   a {
     /*去掉原有链接文字下划线*/

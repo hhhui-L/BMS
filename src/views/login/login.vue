@@ -68,7 +68,7 @@
         </router-link>
 
         <router-link :to="{path: '/register'}">
-          <a href="register.vue" target="_blank" align="right" class="unlogin">注册账号</a>
+          <a href="register.vue" target="_blank" align="right" class="unLogin">注册账号</a>
         </router-link>
       </div>
     </el-form>
@@ -123,6 +123,8 @@ export default {
           }).catch(res => {
             alert(res.data.msg)
           })
+          this.$router.push('/main')
+          this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
         } else {
           this.$message.error('用户名或密码错误')
           console.log('error submit!!')
