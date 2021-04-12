@@ -39,7 +39,7 @@ export default {
     // ws连接成功，后台返回的ws数据，组件要拿数据渲染页面等操作
     wsMessage (data) {
       const dataJson = JSON.parse(data)
-      this.message = dataJson.result
+      this.message = dataJson
       console.log(dataJson)
       // 这里写拿到数据后的业务代码
     },
@@ -57,7 +57,7 @@ export default {
       } */
       // 发起ws请求
       // sendWebsocket('ws://127.0.0.1:5000/userlink/nn', null, this.wsMessage, this.wsError)
-      sendWebsocket('ws://192.168.0.108:5000/userlink/nn', null, this.wsMessage, this.wsError)
+      sendWebsocket('ws://192.168.4.116:5000/userlink/nn', null, this.wsMessage, this.wsError)
     }
   }
 }

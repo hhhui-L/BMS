@@ -150,10 +150,10 @@
                     <el-button type="success" round class="btnControl">恢复</el-button>
                   </el-col>
                   <el-col :span="6">
-                    <el-button type="success" round class="btnControl">运行</el-button>
+                    <el-button type="warning" round class="btnControl">暂停</el-button>
                   </el-col>
                   <el-col :span="6">
-                    <el-button type="warning" round class="btnControl">暂停</el-button>
+                    <el-button type="warning" round class="btnControl">停止</el-button>
                   </el-col>
                 </el-row>
               </el-col>
