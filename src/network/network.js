@@ -19,3 +19,33 @@ export function register (data) {
     data
   })
 }
+export function changePassword (data) {
+  return request({
+    url: 'user/changepwd',
+    method: 'post',
+    headers: {
+      'Content-Type': 'mutipart/form-data'
+    },
+    data
+  })
+}
+export function getData (data) {
+  return request({
+    url: '/dataTest',
+    method: 'post',
+    headers: {
+      'Content-Type': 'mutipart/form-data'
+    },
+    data
+  })
+}
+export function getAllData (data) {
+  return request({
+    url: '/dataAll',
+    method: 'post',
+    headers: {
+      'Content-Type': 'mutipart/form-data'
+    },
+    data
+  })
+}

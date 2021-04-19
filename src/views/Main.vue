@@ -12,14 +12,18 @@
             <router-link to="/bms">电池监测</router-link>
           </el-menu-item>
           <el-menu-item index="3">
+            <i class="el-icon-setting"></i>
+            <router-link to="/setting">工艺设置</router-link>
+          </el-menu-item>
+          <el-menu-item index="4">
             <i class="el-icon-s-marketing"></i>
             <router-link to="/expdata">实验数据</router-link>
           </el-menu-item>
-          <el-menu-item index="4">
+          <el-menu-item index="5">
             <i class="el-icon-setting"></i>
             <router-link to="/manage">项目管理</router-link>
           </el-menu-item>
-          <el-menu-item index="5">
+          <el-menu-item index="6">
             <i class="el-icon-s-help"></i>
             <router-link to="/test">项目测试</router-link>
           </el-menu-item>
@@ -54,8 +58,8 @@
             <el-dropdown>
               <i class="el-icon-setting" style="margin-right: 15px;font-size: 25px"></i>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>修改密码</el-dropdown-item>
-                <el-dropdown-item @click.native="logout">退出登录</el-dropdown-item>
+                <el-dropdown-item style="font-size: 22px" @click.native="changePwd">修改密码</el-dropdown-item>
+                <el-dropdown-item style="font-size: 22px" @click.native="logout">退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
             <span style="font-size: 25px">{{$store.getters.getUser.name}}</span>
@@ -85,6 +89,9 @@ export default {
     logout () {
       sessionStorage.setItem('isLogin', 'false')
       this.$router.push('/login')
+    },
+    changePwd () {
+      this.$router.push('/changePwd')
     },
     toggleCollapse () {
       this.isCollapse = !this.isCollapse

@@ -25,6 +25,14 @@ const routes = [
     }
   },
   {
+    path: '/changePwd',
+    name: 'changePwd',
+    component: () => import('../views/changePwd/changePwd'),
+    meta: {
+      title: '修改密码'
+    }
+  },
+  {
     path: '/main',
     name: '首页',
     component: () => import('../views/Main'),
@@ -32,6 +40,11 @@ const routes = [
       title: '首页'
     },
     children: [
+      {
+        path: '/',
+        // 重定向：初始为login界面
+        redirect: '/currentexp'
+      },
       {
         path: '/bms',
         name: '电池监控',
@@ -46,6 +59,14 @@ const routes = [
         component: () => import('../views/currentExperiment/currentExperiment'),
         meta: {
           title: '当前实验'
+        }
+      },
+      {
+        path: '/setting',
+        name: '工艺设置',
+        component: () => import('../views/setting/setting'),
+        meta: {
+          title: '工艺设置'
         }
       },
       {
