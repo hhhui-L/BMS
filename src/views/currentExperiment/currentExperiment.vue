@@ -326,6 +326,7 @@ export default {
       },
       inputText: '', // 获取输入框内容
       nowDate: '', // 当前日期
+      timer: null, // 定时器名称
       experiment_name: '蓄电池充放电测试',
       battery_model: '双登阀控密封式铅酸蓄电池GFM-200',
       canNotEdit: true,
@@ -373,11 +374,30 @@ export default {
     this.requestWs()
     this.wsMessage()
   },
+  created () {
+    this.timer = setInterval(() => {
+      console.log('----->开始计时')
+      setTimeout(() => {
+        const obj = {
+          operation: 'getData',
+          data: '0',
+          ConCurrent: '0',
+          ConVoltage: '0',
+          ChVoltage: '0',
+          ChAh: '0',
+          ChCurrent: '0'
+        }
+        websocketSend(obj)
+      }, 0)
+    }, 1000 * 60 * 2)
+  },
   // 销毁定时器
   beforeDestroy () {
     if (this.formatDate) {
       clearInterval(this.formatDate) // 在Vue实例销毁前，清除时间定时器
     }
+    clearInterval(this.timer)
+    this.timer = null
   },
   methods: {
     send () {
@@ -478,7 +498,7 @@ export default {
               ChCurrent: '0'
             }
             websocketSend(obj)
-          }, 7000)
+          }, 8000)
         }
       } else if (result.type === 'stop') {
         console.log(result.status)
@@ -495,7 +515,7 @@ export default {
               ChCurrent: '0'
             }
             websocketSend(obj)
-          }, 7000)
+          }, 8000)
         }
       }
       // this.message = result
@@ -515,7 +535,7 @@ export default {
       } */
       // 发起ws请求
       // sendWebsocket('ws://127.0.0.1:5000/userlink/nn', null, this.wsMessage, this.wsError)
-      sendWebsocket('ws://192.168.1.101:5000/userlink/nn', this.obj, this.wsMessage, this.wsError)
+      sendWebsocket('ws://192.168.1.108:5000/userlink/nn', this.obj, this.wsMessage, this.wsError)
     },
     currentTime () {
       setInterval(this.formatDate, 500)

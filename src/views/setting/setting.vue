@@ -324,7 +324,7 @@ export default {
       } */
       // 发起ws请求
       // sendWebsocket('ws://127.0.0.1:5000/userlink/nn', null, this.wsMessage, this.wsError)
-      sendWebsocket('ws://192.168.1.101:5000/userlink/nn', null, this.wsMessage, this.wsError)
+      sendWebsocket('ws://192.168.1.108:5000/userlink/nn', null, this.wsMessage, this.wsError)
     },
     set () {
       const obj = {
@@ -391,11 +391,11 @@ export default {
         const obj = {
           operation: 'savePatternF',
           data: '0',
-          ConCurrent: this.ctnCurrent,
+          ConCurrent: this.ctnCurrent * 10,
           ConVoltage: '0',
           ChCurrent: '0',
-          ChVoltage: this.excVoltage,
-          ChAh: this.excSoc
+          ChVoltage: this.excVoltage * 10,
+          ChAh: this.excSoc * 10
         }
         websocketSend(obj)
       } else if (this.currentPattern === '充电') {
