@@ -42,7 +42,7 @@ const routes = [
     children: [
       {
         path: '/',
-        // 重定向：初始为login界面
+        // 重定向：初始为当前实验界面
         redirect: '/currentexp'
       },
       {

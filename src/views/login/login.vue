@@ -117,14 +117,15 @@ export default {
           login(loginInfo).then(res => {
             alert(res.data.msg)
             if (res.data.code === 200) {
+              sessionStorage.setItem('isLogin', 'true')
               this.$router.push('/main')
               this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
             }
           }).catch(res => {
             alert(res.data.msg)
           })
-          this.$router.push('/main')
-          this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
+          // this.$router.push('/main')
+          // this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
         } else {
           this.$message.error('用户名或密码错误')
           console.log('error submit!!')

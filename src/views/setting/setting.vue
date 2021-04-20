@@ -324,7 +324,7 @@ export default {
       } */
       // 发起ws请求
       // sendWebsocket('ws://127.0.0.1:5000/userlink/nn', null, this.wsMessage, this.wsError)
-      sendWebsocket('ws://192.168.1.108:5000/userlink/nn', null, this.wsMessage, this.wsError)
+      sendWebsocket('ws://47.97.21.239:5000/userlink/nn', null, this.wsMessage, this.wsError)
     },
     set () {
       const obj = {

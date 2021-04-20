@@ -19,14 +19,14 @@
             <i class="el-icon-s-marketing"></i>
             <router-link to="/expdata">实验数据</router-link>
           </el-menu-item>
-          <el-menu-item index="5">
+        <!--  <el-menu-item index="5">
             <i class="el-icon-setting"></i>
             <router-link to="/manage">项目管理</router-link>
           </el-menu-item>
           <el-menu-item index="6">
             <i class="el-icon-s-help"></i>
             <router-link to="/test">项目测试</router-link>
-          </el-menu-item>
+          </el-menu-item>-->
          <!-- <el-submenu index="2">
             <template slot="title"><i class="el-icon-menu"></i>设备监控</template>
             <el-menu-item-group>
@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     logout () {
-      sessionStorage.setItem('isLogin', 'false')
+      sessionStorage.clear()
       this.$router.push('/login')
     },
     changePwd () {

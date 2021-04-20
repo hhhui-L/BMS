@@ -204,7 +204,7 @@ export default {
             fontSize: 25
           },
           // 上右下左
-          padding: [20, 0, 0, 80]
+          padding: [20, 0, 50, 0]
         },
         // 提示框
         tooltip: {
@@ -216,10 +216,17 @@ export default {
           x: 'left',
           y: 'top',
           // 上右下左
-          padding: [20, 0, 0, 1020],
+          padding: [20, 0, 50, 50],
           textStyle: {
             fontSize: 25
           }
+        },
+        grid: {
+          top: '16%', // 等价于 y: '16%'
+          left: '3%',
+          right: '8%',
+          bottom: '10%',
+          containLabel: true
         },
         // 工具栏：内置有导出图片、数据视图、动态类型切换、数据区域缩放、重置五个工具
         toolbox: {
@@ -239,7 +246,7 @@ export default {
           x: 'right',
           y: 'top',
           // 上右下左
-          padding: [20, 0, 0, 20]
+          padding: [20, 0, 50, 20]
         },
         xAxis: {
           type: 'category', // 类目轴，适用于离散的类目数据，为该类型时必须通过data设置类目数据

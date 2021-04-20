@@ -9,6 +9,7 @@ import Vuex from 'vuex'
 import store from './store'
 import echarts from 'echarts'
 import VueParticles from 'vue-particles'
+import 'babel-polyfill'
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
@@ -25,6 +26,15 @@ new Vue({
 }).$mount('#app')
 
 router.beforeEach((to, from, next) => {
-  next()
+  // next()
   document.title = to.meta.title
+  // const isLogin = sessionStorage.getItem('isLogin')
+  // if (to.path === '/login') {
+  //   if (isLogin != null) {
+  //     next('/main')
+  //   }
+  // } else if (isLogin === null) {
+  //   next('/login')
+  // }
+  next()
 })
