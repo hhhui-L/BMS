@@ -29,7 +29,8 @@ const routes = [
     name: 'changePwd',
     component: () => import('../views/changePwd/changePwd'),
     meta: {
-      title: '修改密码'
+      title: '修改密码',
+      requireAuth: true
     }
   },
   {
@@ -37,7 +38,8 @@ const routes = [
     name: '首页',
     component: () => import('../views/Main'),
     meta: {
-      title: '首页'
+      title: '首页',
+      requireAuth: true
     },
     children: [
       {
@@ -46,19 +48,21 @@ const routes = [
         redirect: '/currentexp'
       },
       {
-        path: '/bms',
-        name: '电池监控',
-        component: () => import('../views/bms/Bms'),
-        meta: {
-          title: '电池监控'
-        }
-      },
-      {
         path: '/currentexp',
         name: '当前实验',
         component: () => import('../views/currentExperiment/currentExperiment'),
         meta: {
-          title: '当前实验'
+          title: '当前实验',
+          requireAuth: true
+        }
+      },
+      {
+        path: '/bms',
+        name: '电池监控',
+        component: () => import('../views/bms/Bms'),
+        meta: {
+          title: '电池监控',
+          requireAuth: true
         }
       },
       {
@@ -66,7 +70,8 @@ const routes = [
         name: '工艺设置',
         component: () => import('../views/setting/setting'),
         meta: {
-          title: '工艺设置'
+          title: '工艺设置',
+          requireAuth: true
         }
       },
       {
@@ -74,7 +79,8 @@ const routes = [
         name: '实验数据',
         component: () => import('../views/expData/expData'),
         meta: {
-          title: '实验数据'
+          title: '实验数据',
+          requireAuth: true
         }
       },
       {
@@ -122,7 +128,22 @@ const router = new VueRouter({
 
 // 网址显示title
 router.beforeEach((to, from, next) => {
-  document.title = to.matched[0].meta.title
-  next()
+  document.title = to.matched[0].meta.title // 显示标题
+  // next()
+  if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
+    if (sessionStorage.getItem('isLogin') === 'true') {
+      next()
+    } else {
+      // 未登录，跳转到登录页面
+      next('/login')
+    }
+  } else {
+    // if (sessionStorage.getItem('isLogin') === 'true') {
+    //   next('/menu')
+    // } else {
+    //   next()
+    // }
+    next()
+  }
 })
 export default router

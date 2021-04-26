@@ -116,9 +116,11 @@ export default {
           console.log(loginInfo)
           login(loginInfo).then(res => {
             alert(res.data.msg)
+            console.log(res.data.msg)
             if (res.data.code === 200) {
               sessionStorage.setItem('isLogin', 'true')
-              this.$router.push('/main')
+              // this.$router.push('/main')
+              this.$router.replace('/main')
               this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
             }
           }).catch(res => {
