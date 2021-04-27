@@ -535,7 +535,7 @@ export default {
       } */
       // 发起ws请求
       // 47.97.21.239
-      // sendWebsocket('ws://127.0.0.1:5000/userlink/nn', null, this.wsMessage, this.wsError)
+      // sendWebsocket('ws://192.168.1.103:5000/userlink/nn', this.obj, this.wsMessage, this.wsError)
       sendWebsocket('ws://47.97.21.239:5000/userlink/nn', this.obj, this.wsMessage, this.wsError)
     },
     currentTime () {

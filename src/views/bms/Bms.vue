@@ -26,7 +26,8 @@ export default {
       currentIndex: [],
       voltageIndex: [],
       current: [],
-      voltage: []
+      voltage: [],
+      time: []
       // option: {
       //   title: {
       //     text: '电压与电流变化情况',
@@ -131,13 +132,16 @@ export default {
       const info = new FormData()
       info.append('current', 'resultCurrent')
       info.append('voltage', 'resultVoltage')
+      info.append('Time', 'Time')
       console.log(info)
       getData(info).then(res => {
         // alert(JSON.stringify(res.data))
         this.current = res.data.current
         this.voltage = res.data.voltage
+        this.time = res.data.Time
         console.log(this.current)
         console.log(this.voltage)
+        console.log(this.time)
         for (let i = 0; i < this.current.length; i++) {
           this.currentIndex.push(i)
         }
@@ -146,11 +150,12 @@ export default {
         }
         console.log('横坐标1------>currentIndex' + JSON.stringify(this.currentIndex))
         console.log('横坐标2------>voltageIndex' + JSON.stringify(this.voltageIndex))
+        console.log('横坐标3------>Time' + JSON.stringify(this.time))
         console.log('纵坐标1------>电流' + this.current)
         console.log('纵坐标2------>电压' + this.voltage)
         this.voltageChart.setOption({
           xAxis: {
-            data: this.currentIndex
+            data: this.time
           },
           series: [
             {
@@ -254,11 +259,22 @@ export default {
           // 可以直接设置数值或者相对的百分比，在设置 min 和 max 后无效['20%', '20%']
           boundaryGap: false,
           data: this.voltageIndex,
+          // 设置字体倾斜
           axisLabel: {
+            interval: 0,
+            rotate: 80,
+            // 倾斜度 -90 至 90 默认为0
+            margin: 10,
             textStyle: {
-              fontSize: '25'
+              color: '#000000',
+              fontSize: '20'
             }
           }
+          // axisLabel: {
+          //   textStyle: {
+          //     fontSize: '25'
+          //   }
+          // }
         },
         yAxis: {
           type: 'value',
