@@ -47,4 +47,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 *  组件使用ElementUI
 *  使用axios与后台发起请求
-*  
+*  使用websocket与PC端和后台建立长连接
