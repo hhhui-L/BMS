@@ -24,3 +24,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 基于Vue的前端页面功能
+
+1.用户注册/登录/修改密码
+
+2.
