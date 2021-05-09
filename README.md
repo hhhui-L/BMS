@@ -41,3 +41,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 6.查看实验历史数据
+
+### 项目说明
+
+
+*  组件使用ElementUI
+*  使用axios与后台发起请求
+*  
