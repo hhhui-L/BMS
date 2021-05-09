@@ -1,4 +1,4 @@
-# bms
+# bms(电池管理系统)
 
 ## Project setup
 ```
