@@ -25,7 +25,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 基于Vue的前端页面功能
 
-1.用户注册/登录/修改密码
+  1.用户注册/登录/修改密码
 
 
 2.登录页面使用vue-particles插件画粒子特效
