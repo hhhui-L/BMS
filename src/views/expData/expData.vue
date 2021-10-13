@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 100%;width: 100%">
     <!-- 描述：选择条件，清空和搜索按钮-->
     <div class="filter-container">
       <div class="letf-items" style="float: left;margin-bottom: 10px;margin-top: 10px">

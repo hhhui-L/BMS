@@ -1,78 +1,96 @@
 <template>
-  <div style="background-color: white">
-<!--    <div style="width:280px;height: 80px; background: #026295;box-shadow: 0 0 10px #008b9a; border: 1px solid #008b9a;color: #fff;text-align: center;">-->
-<!--      <div style="width: 239px; height: 80px; float: left;">-->
-<!--        <div style="width: 238px;height: 30px;border-bottom: 1px solid #008b9a;line-height: 30px;">TipsList.name</div>-->
-<!--        <div style="width: 119px;height: 50px;float: left;">-->
-<!--          <p style="font-size: 20px;line-height: 28px;color: yellow;">TipsList.value[2]</p>-->
-<!--          <p>系统数量</p>-->
-<!--        </div>-->
-<!--        <div style="width: 119px;height: 50px;float: left;border-left: 1px solid #008b9a;">-->
-<!--          <p>TipsList.num[2]</p>-->
-<!--          <p>已接入</p>-->
-<!--        </div>-->
-<!--        <div></div>-->
-<!--      </div>-->
-<!--      <div style="width: 39px;height: 80px; border-left: 1px solid #008b9a;float: left;" @click="toClient(TipsList.id[2])">-->
-<!--        <i class="el-icon-arrow-right"></i>-->
-<!--      </div>-->
-
-      <div style="width:280px;height: 150px; background: #026295;box-shadow: 0 0 10px #008b9a; border: 1px solid #008b9a;color: #fff;text-align: center;font-size: 20px">
-        <div style="width: 239px; height: 80px; float: left;">
-          <div style="width: 238px;height: 30px;border-bottom: 1px solid #008b9a">湖南</div>
-          <div style="width: 119px;height: 60px;float: left;border-bottom: 1px solid #008b9a;margin: 0px">
-            <p style="color: #F89D2E;margin: 0px">102</p>
-            <p style="margin: 0px">站点数量</p>
-          </div>
-          <div style="width: 119px;height: 60px;float: left;border-bottom: 1px solid #008b9a;border-bottom: 1px solid #008b9a;margin: 0px">
-            <p style="color: #F89D2E;margin: 0px">150</p>
-            <p style="margin: 0px">电池组数量</p>
-          </div>
-          <div style="width: 119px;height: 60px;float: right;margin: 0px">
-            <p style="color: #FF0000;margin: 0px">1</p>
-            <p style="margin: 0px">故障数量</p>
-          </div>
-          <div style="width: 119px;height: 60px;float: right;margin: 0px">
-            <p style="color: #F89D2E;margin: 0px">16</p>
-            <p style="margin: 0px">在线数量</p>
-          </div>
+  <!--  background-color: #0A0D0D-->
+  <div style="height: 100%;width: 100%;background-color: #1c2431">
+    <div style="height:100%;width: 30%;float:left;">111</div>
+    <div style="height:100%;width: 70%;float:left;">
+      <el-card style="border:3px solid #01FFFF;border-radius: 10px;height: 93%;margin: 20px;background-color: transparent" >
+        <div slot="header">
+          <span class="card-title" style="font-size: 25px;color: white">监控地图</span>
         </div>
-        <div style="width: 39px;height: 150px; border-left: 1px solid #008b9a;float: left;" @click="toClient()">
-          <i class="el-icon-arrow-right" style="margin-top: 60px"></i>
-        </div>
+        <div id="myChartChina" style="height:750px;"></div>
+        <!--          <div >-->
+        <!--            <el-row class="elRowBase" :gutter="10">-->
+        <!--              <el-col :span="6">-->
+        <!--              </el-col>-->
+        <!--            </el-row>-->
+        <!--          </div>-->
+      </el-card>
+      <!--      <div style="height:10%;border:4px solid #01FFFF;border-radius:30px;margin:20px;">-->
+      <!--        <div style="color: white;font-size: 44px;margin-left:10px;margin-top: 50px">监控云图</div>
+              <div style="color: white;font-size: 44px;text-align:right;margin-right:10px;margin-top: 50px">监控云图</div>-->
+      <!--      </div>-->
+      <!--      <div id="myChartChina" style="height:85%;border:4px solid #01FFFF;border-radius:30px;margin:20px"></div>-->
+      <!--      <div class="Page" style="height:90%;border:4px solid #01FFFF;border-radius:30px;margin-right: 10px">-->
+      <!--&lt;!&ndash;        <div id="myChartChina" style="height:90%;width:100%;"></div>&ndash;&gt;-->
+      <!--        <div id="box" v-if="ifbox">-->
+      <!--          <div class="box_left">-->
+      <!--            <div class="box_title">{{TipsList.name}}</div>-->
+      <!--            <div class="box_list">-->
+      <!--              <p>{{TipsList.value[2]}}</p>-->
+      <!--              <p>系统数量</p>-->
+      <!--            </div>-->
+      <!--            <div class="box_list box_lists">-->
+      <!--              <p>{{TipsList.num[2]}}</p>-->
+      <!--              <p>已接入</p>-->
+      <!--            </div>-->
+      <!--            <div></div>-->
+      <!--          </div>-->
+      <!--          <div class="box_right" @click="toClient(TipsList.id[2])">-->
+      <!--            <i class="el-icon-arrow-right"></i>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
     </div>
-<!--    <div id="myChartChina" :style="{width: '100%', height: '500px'}"></div>-->
-<!--    <div class="projectList">-->
-<!--      <div>-->
-<!--        <p> <i class="el-icon-share"></i> 客户数量</p>-->
-<!--        <div class="inputList">3600</div>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <p> <i class="el-icon-share"></i> 租户数量</p>-->
-<!--        <div class="inputList">1500</div>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <p> <i class="el-icon-share"></i> 控制系统数量</p>-->
-<!--        <div class="inputList">20800</div>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <p> <i class="el-icon-share"></i> 接入系统数量</p>-->
-<!--        <div class="inputList">3600</div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div id="box" v-if="ifbox">-->
-<!--      <div>-->
-<!--        <p>{{TipsList.name}}</p>-->
-<!--        <p>{{TipsList.value[2]}}</p>-->
-<!--        <p>{{TipsList.num[2]}}</p>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 
+  <!--  <div class="Page">-->
+  <!--    <div id="myChartChina" :style="{width: '60%', height: '710px'}"></div>-->
+  <!--    <div class="projectList">-->
+  <!--      <div>-->
+  <!--        <p> <i class="el-icon-share"></i> 客户数量</p>-->
+  <!--        <div class="inputList">3600</div>-->
+  <!--      </div>-->
+  <!--      <div>-->
+  <!--        <p> <i class="el-icon-share"></i> 租户数量</p>-->
+  <!--        <div class="inputList">1500</div>-->
+  <!--      </div>-->
+  <!--      <div>-->
+  <!--        <p> <i class="el-icon-share"></i> 控制系统数量</p>-->
+  <!--        <div class="inputList">20800</div>-->
+  <!--      </div>-->
+  <!--      <div>-->
+  <!--        <p> <i class="el-icon-share"></i> 接入系统数量</p>-->
+  <!--        <div class="inputList">3600</div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+
+  <!--    <div id="box" v-if="ifbox">-->
+  <!--      <div class="box_left">-->
+  <!--        <div class="box_title">{{TipsList.name}}</div>-->
+  <!--        <div class="box_list">-->
+  <!--          <p>{{TipsList.value[2]}}</p>-->
+  <!--          <p>系统数量</p>-->
+  <!--        </div>-->
+  <!--        <div class="box_list box_lists">-->
+  <!--          <p>{{TipsList.num[2]}}</p>-->
+  <!--          <p>已接入</p>-->
+  <!--        </div>-->
+  <!--        <div></div>-->
+  <!--      </div>-->
+  <!--      <div class="box_right" @click="toClient(TipsList.id[2])">-->
+  <!--        <i class="el-icon-arrow-right"></i>-->
+  <!--      </div>-->
+  <!--    </div>-->
+
+  <!--    <div class="box_Tips">-->
+  <!--      <p>提示：滚动鼠标滚轮控制地图缩放</p>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
 </template>
 
 <script>
+// import '../../src/js/china'
 const echarts = require('echarts')
 require('echarts/map/js/china')
 export default {
@@ -88,40 +106,19 @@ export default {
   },
   methods: {
     // 点击模拟数据右箭头跳转外页面，
-    // toClient (id) {
-    //   this.$router.push({
-    //     path: '/Client',
-    //     query: { lesseeCompanyId: id }
-    //   })
-    // },
-    toClient () {
+    toClient (id) {
       this.$router.push({
-        path: '/battery/details'
+        path: '/Client',
+        query: { lesseeCompanyId: id }
       })
     },
     ChinaMap () {
       var that = this
-
       // 模拟数据
       const data = [
-        {
-          name: '海门',
-          value: 90,
-          num: 5,
-          id: 8
-        },
-        {
-          name: '鄂尔多斯',
-          value: 102,
-          num: 15,
-          id: 16
-        },
-        {
-          name: '齐齐哈尔',
-          value: 140,
-          num: 30,
-          id: 20
-        }
+        { name: '海门', value: 90, num: 5, id: 8 },
+        { name: '鄂尔多斯', value: 102, num: 15, id: 16 },
+        { name: '齐齐哈尔', value: 140, num: 30, id: 20 }
       ]
       const geoCoordMap = {
         海门: [121.15, 31.89],
@@ -148,14 +145,15 @@ export default {
       const myChartChina = echarts.init(document.getElementById('myChartChina')) // 这里是为了获得容器所在位置
       window.onresize = myChartChina.resize
       myChartChina.setOption({ // 进行相关配置
-        backgroundColor: '#1c2431', // 地图背景色
+        // backgroundColor: '#1c2431', // 地图背景色
         geo: { // 这个是重点配置区
           map: 'china', // 表示中国地图
           label: {
             normal: {
               show: true, // 是否显示对应地名
               textStyle: { // 字体颜色
-                color: '#797979'
+                // color: '#797979'
+                color: 'white'
               }
             },
             emphasis: {
@@ -214,15 +212,15 @@ export default {
           }
         },
 
-        {
-          type: 'map',
-          map: 'china',
-          geoIndex: 0,
-          aspectScale: 0.75,
-          tooltip: {
-            show: false
+          {
+            type: 'map',
+            map: 'china',
+            geoIndex: 0,
+            aspectScale: 0.75,
+            tooltip: {
+              show: false
+            }
           }
-        }
 
         ]
       })
@@ -233,9 +231,7 @@ export default {
         if (params.componentType === 'series') {
           if (params.data) {
             that.TipsList = params.data
-            console.log('---------that.TipsList-------' + params.data)
             that.ifbox = true
-            console.log('---------进入-------' + params.data)
             that.boxPosition()
           } else {
             that.ifbox = false
@@ -246,12 +242,12 @@ export default {
     // 点击地点显示对应位置数据
     boxPosition () {
       var e = event || window.event
-      var x = e.clientX + 245 + 'px'
+      var x = e.clientX + 145 + 'px'
       var y = e.clientY + 5 + 'px'
       clearTimeout(t)
       var t = setTimeout(function () {
         $('#box').css('top', y),
-        $('#box').css('left', x)
+          $('#box').css('left', x)
       }, 100)
       t
     }
@@ -261,7 +257,7 @@ export default {
 
 <style scoped>
 .Page{
-  position: relative;
+  /*position: relative;*/
 }
 .projectList{
   position: absolute;
@@ -299,15 +295,16 @@ export default {
   line-height: 26px;
   text-indent: 1em;
 }
+
 #box{
   width:280px;
-  height: 180px;
+  height: 80px;
   background: #026295;
   box-shadow: 0 0 10px #008b9a;
   border: 1px solid #008b9a;
   position: absolute;
   top:10px;
-  left: 80%;
+  left: 50%;
   margin-left: -140px;
   color: #fff;
   text-align: center;
@@ -325,7 +322,7 @@ export default {
 }
 .box_list{
   width: 119px;
-  height: 100px;
+  height: 50px;
   float: left;
 }
 .box_lists{

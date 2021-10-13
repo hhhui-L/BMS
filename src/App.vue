@@ -23,4 +23,8 @@ export default {
     display: block!important;
     width: 17px!important;
   }
+  html,body,#app{
+    height: 100%;
+    margin: 0;
+  }
 </style>

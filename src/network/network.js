@@ -19,6 +19,16 @@ export function register (data) {
     data
   })
 }
+export function addUser (data) {
+  return request({
+    url: 'add/user',
+    method: 'post',
+    headers: {
+      'Content-Type': 'mutipart/form-data'
+    },
+    data
+  })
+}
 export function changePassword (data) {
   return request({
     url: 'user/changepwd',
