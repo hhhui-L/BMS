@@ -1,5 +1,5 @@
 <template>
-    <div style="position:absolute;height: 100%;width: 100%">
+    <div style="height: 100%;width: 100%">
       <div style="height:100%;width: 55%;float:left">
         <div style="padding: 8px">
           <el-card style="border-radius: 10px">

@@ -9,12 +9,14 @@ import Vuex from 'vuex'
 import store from './store'
 import echarts from 'echarts'
 import VueParticles from 'vue-particles'
+import scroll from 'vue-seamless-scroll'
 import 'babel-polyfill'
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.use(Vuex)
 Vue.use(VueParticles)
+Vue.use(scroll)
 Vue.prototype.axios = axios
 Vue.prototype.echarts = echarts
 Vue.config.productionTip = false

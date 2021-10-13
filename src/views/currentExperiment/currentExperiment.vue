@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="height: 100%;width: 100%">
       <!--<button @click="requestWs">连接</button>-->
       <div style="position:absolute;height: 100%;width: 100%">
         <div style="height:100%;width: 40%;float:left">

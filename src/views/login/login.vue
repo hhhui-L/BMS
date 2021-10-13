@@ -68,21 +68,21 @@
         </router-link>
 
         <router-link :to="{path: '/register'}">
-          <a href="register.vue" target="_blank" align="right" class="unLogin">注册账号</a>
+          <a target="_blank" align="right" class="unLogin">注册账号</a>
         </router-link>
       </div>
     </el-form>
   </div>
 </template>
 <script>
-import { login } from '../../network/network'
+// import { login } from '../../network/network'
 export default {
   name: 'login',
   data () {
     return {
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '12345'
       },
       loginRules: {
         username: [{ required: true, message: '请输入名字', trigger: 'blur' }],
@@ -95,42 +95,28 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // this.$router.push({ name: 'Main', params: { name: this.loginForm.username } })
-          // const data = { username: String(this.loginForm.username), password: String(this.loginForm.password) }
-          /* request({
-            url: '/login'
-          }).then(res => {
-            console.log(res)
-          }).catch(err => {
-            console.log(err)
-          }) */
-          /* request({
-            url: '/login'
-          }, res => {
-            console.log(res)
-          }, err => {
-            console.log(err)
-          }) */
-          const loginInfo = new FormData()
-          loginInfo.append('userName', this.loginForm.username)
-          loginInfo.append('passwd', this.loginForm.password)
-          console.log(loginInfo)
-          login(loginInfo).then(res => {
-            console.log(res.data.msg)
-            if (res.data.code === 200) {
-              sessionStorage.setItem('isLogin', 'true')
-              // this.$router.push('/main')
-              this.$router.replace('/main')
-              this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
-            } else {
-              alert(res.data.msg)
-            }
-          }).catch(res => {
-            alert(res.data.msg)
-          })
-          // this.$router.push('/main')
-          // this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
+          // const loginInfo = new FormData()
+          // loginInfo.append('userName', this.loginForm.username)
+          // loginInfo.append('passwd', this.loginForm.password)
+          // console.log(loginInfo)
+          // login(loginInfo).then(res => {
+          //   console.log(res.data.msg)
+          //   if (res.data.code === 200) {
+          //     sessionStorage.setItem('isLogin', 'true')
+          //     // this.$router.push('/main')
+          //     this.$router.replace('/main')
+          //     this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
+          //   } else {
+          //     alert(res.data.msg)
+          //   }
+          // }).catch(res => {
+          //   alert(res.data.msg)
+          // })
+
+          this.$router.push('/main')
+          this.$store.dispatch('asyncUpdateUser', { name: this.loginForm.username })
         } else {
-          this.$message.error('用户名或密码错误')
+          // this.$message.error('用户名或密码错误')
           console.log('error submit!!')
           return false
         }
